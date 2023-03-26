@@ -2,11 +2,13 @@ package com.example.persistence.repository;
 
 import com.example.persistence.model.Project;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
-public interface IProjectRepository {
+public interface IProjectRepository extends CrudRepository<Project, Long>{
 
-    Optional<Project> findById(Long id);
+    Optional<Project> findByName(String name);
 
-    Project save (Project project);
+    List<Project> findByDateCreatedBetween(LocalDate start, LocalDate end);
 }
