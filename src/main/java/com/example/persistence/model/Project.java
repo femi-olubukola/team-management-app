@@ -1,22 +1,27 @@
 package com.example.persistence.model;
 
 import java.time.LocalDate;
+import java.util.Random;
 
+@Entity
 public class Project {
 
+    @Id
     private Long id;
     private String name;
     private LocalDate dateCreated;
 
-    public Project(Long id, String name, LocalDate dateCreated) {
-        super();
-        this.id = id;
+    public Project() {
+
+    }
+    public Project(String name, LocalDate dateCreated) {
+        this.id = new Random().nextLong();
         this.name = name;
         this.dateCreated = dateCreated;
     }
 
     public Project(Project project) {
-        this(project.getId(), project.getName(), project.getDateCreated());
+        this(project.getName(), project.getDateCreated());
     }
 
     public Long getId() {
